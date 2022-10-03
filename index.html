@@ -432,7 +432,10 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="https://dev.lykns.tk/">主页</a>
+                            <a class="nav-link text-dark" href="https://www.lykns.tk/">返回主站</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="https://dev.lykns.tk/">LYKNSDN主页</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" href="https://eow.lykns.tk/connect">联系与关于</a>
@@ -606,55 +609,71 @@
                 </div>
             </div>
             <div id="menu1" class="container tab-pane fade"><br>
-                筛选：
-                <ul class="nav nav-tabs" role="tablist">
+                筛选状态
+                <!-- Nav tabs -->
+                <ul class="nav nav-pills" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" data-bs-toggle="tab" href="#r0">开发中</a>
+                        <a class="nav-link active" data-bs-toggle="pill" href="#dis">全部项目</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#r1">已完成且仍受支持</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#r2">支持已终止或开发中止</a>
+                        <a class="nav-link" data-bs-toggle="pill" href="#a">根据状态筛选</a>
                     </li>
                 </ul>
 
                 <!-- Tab panes -->
                 <div class="tab-content">
-                    <div id="r0" class="container tab-pane active"><br>
+                    <div id="dis" class="container tab-pane active"><br>
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title"><small><span
                                             class="badge rounded-pill bg-warning">开发中</span></small>计算机工具包6</h4>
                                 <p class="card-text">CTKⅥ</p>
                                 <a class="text-warning">联系管理组</a>
-                                <a href="https://github.com/CaptBenjamin/CTK6" class="card-link">在 Github 上查看</a>
+                                <a href="https://github.com/CaptBenjamin/CTK6" class="card-link">在 Github
+                                    上查看</a>
                             </div>
                         </div>
                         <br>
-                    </div>
-                    <div id="r1" class="container tab-pane fade"><br>
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title"><small><span
-                                            class="badge rounded-pill bg-success">已完成</span></small>CaptB点名器</h4>
+                                            class="badge rounded-pill bg-success">已完成</span></small>CaptB 点名器
+                                </h4>
                                 <p class="card-text">CBRC</p>
                                 <script>
+                                    function openWin0() {
+                                        window.open("https://dev.lykns.tk/CBRC/publish.html", "", "width=600,height=450,location=no,menubar=no,resizable=no,status=no,titlebar=no,toolbar=no");
+                                    }
+                                </script>
+                                <input type="button" value="下载安装程序" onclick="openWin0()">
+                                <a href="https://github.com/CaptBenjamin/CBRC" class="card-link">在 Github
+                                    上查看</a>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title"><small><span
+                                            class="badge rounded-pill bg-success">已完成</span></small>CaptB
+                                    点名器（高二五班版）</h4>
+                                <p class="card-text">CBRC5</p>
+                                <script>
                                     function openWin1() {
-                                        window.open("https://dev.lykns.tk/CBRC/web_setup.exe", "", "width=600,height=450,location=no,menubar=no,resizable=no,status=no,titlebar=no,toolbar=no");
+                                        window.open("https://dev.lykns.tk/59gqco9i74vju94bytip/publish.html", "", "width=600,height=450,location=no,menubar=no,resizable=no,status=no,titlebar=no,toolbar=no");
                                     }
                                 </script>
                                 <input type="button" value="下载安装程序" onclick="openWin1()">
-                                <a href="https://github.com/CaptBenjamin/CBRC" class="card-link">在 Github 上查看</a>
                             </div>
                         </div>
                         <br>
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title"><small><span
-                                            class="badge rounded-pill bg-success">已完成</span></small>CAPTB压缩器重制版</h4>
+                                            class="badge rounded-pill bg-success">已完成</span></small>CAPTB压缩器重制版
+                                </h4>
                                 <p class="card-text">CAPTB-compressor</p>
-                                <a href="https://github.com/CaptBenjamin/CAPTB-compressor" class="card-link">在 Github
+                                <a href="https://github.com/CaptBenjamin/CAPTB-compressor" class="card-link">在
+                                    Github
                                     上查看</a>
                             </div>
                         </div>
@@ -665,12 +684,13 @@
                                             class="badge rounded-pill bg-success">已完成</span></small>北京天气</h4>
                                 <p class="card-text">Beijing-s-weather</p>
                                 <script>
-                                    function openWin0() {
-                                        window.open("https://dev.lykns.tk/BJW/web_setup.exe", "", "width=600,height=450,location=no,menubar=no,resizable=no,status=no,titlebar=no,toolbar=no");
+                                    function openWin2() {
+                                        window.open("https://dev.lykns.tk/BJW/publish.html", "", "width=600,height=450,location=no,menubar=no,resizable=no,status=no,titlebar=no,toolbar=no");
                                     }
                                 </script>
-                                <input type="button" value="下载安装程序" onclick="openWin0()">
-                                <a href="https://github.com/CaptBenjamin/Beijing-s-weather" class="card-link">在 Github
+                                <input type="button" value="下载安装程序" onclick="openWin2()">
+                                <a href="https://github.com/CaptBenjamin/Beijing-s-weather" class="card-link">在
+                                    Github
                                     上查看</a>
                             </div>
                         </div>
@@ -681,24 +701,26 @@
                                             class="badge rounded-pill bg-success">已完成</span></small>【代码示例】进度条100自动弹出新窗体
                                 </h4>
                                 <p class="card-text"></p>
-                                <a href="https://github.com/CaptBenjamin/-100-" class="card-link">在 Github 上查看</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="r2" class="container tab-pane fade"><br>
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title"><small><span
-                                            class="badge rounded-pill bg-danger">停止支持</span></small>CB浏览器</h4>
-                                <p class="card-text">CB-Browser</p>
-                                <a href="https://github.com/CaptBenjamin/CB-Browser" class="card-link">在 Github 上查看</a>
+                                <a href="https://github.com/CaptBenjamin/-100-" class="card-link">在 Github
+                                    上查看</a>
                             </div>
                         </div>
                         <br>
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title"><small><span
-                                            class="badge rounded-pill bg-danger">停止支持</span></small>LYKNS 客户端 Windows 版
+                                            class="badge rounded-pill bg-danger">停止支持</span></small>CB浏览器</h4>
+                                <p class="card-text">CB-Browser</p>
+                                <a href="https://github.com/CaptBenjamin/CB-Browser" class="card-link">在 Github
+                                    上查看</a>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title"><small><span
+                                            class="badge rounded-pill bg-danger">停止支持</span></small>LYKNS 客户端
+                                    Windows 版
                                 </h4>
                                 <p class="card-text">LYKNS Client on Windows</p>
                                 <a class="text-danger">停止安装</a>
@@ -708,7 +730,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title"><small><span
-                                            class="badge rounded-pill bg-danger">开发中止</span></small>LYKNS 客户端 MacOS 版
+                                            class="badge rounded-pill bg-danger">开发中止</span></small>LYKNS 客户端
+                                    MacOS 版
                                 </h4>
                                 <p class="card-text">LYKNS Client on MacOS</p>
                             </div>
@@ -717,7 +740,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title"><small><span
-                                            class="badge rounded-pill bg-danger">开发中止</span></small>LYKNS 客户端 Linux 版
+                                            class="badge rounded-pill bg-danger">开发中止</span></small>LYKNS 客户端
+                                    Linux 版
                                 </h4>
                                 <p class="card-text">LYKNS Client on Linux</p>
                             </div>
@@ -726,7 +750,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title"><small><span
-                                            class="badge rounded-pill bg-danger">停止支持</span></small>LYKNS 客户端 Android 版
+                                            class="badge rounded-pill bg-danger">停止支持</span></small>LYKNS 客户端
+                                    Android 版
                                 </h4>
                                 <p class="card-text">LYKNS Client on Android</p>
                                 <a class="text-danger">停止下载</a>
@@ -736,7 +761,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title"><small><span
-                                            class="badge rounded-pill bg-danger">开发中止</span></small>LYKNS 客户端 iOS 版</h4>
+                                            class="badge rounded-pill bg-danger">开发中止</span></small>LYKNS 客户端
+                                    iOS 版</h4>
                                 <p class="card-text">LYKNS Client on iOS</p>
                             </div>
                         </div>
@@ -744,9 +770,186 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title"><small><span
-                                            class="badge rounded-pill bg-danger">停止支持</span></small>CAPTB压缩器</h4>
+                                            class="badge rounded-pill bg-danger">停止支持</span></small>CAPTB压缩器
+                                </h4>
                                 <p class="card-text">CAPTB-compressor</p>
                                 <a class="text-danger">停止安装</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="a" class="container tab-pane fade">
+                        筛选标签
+                        <ul class="nav nav-pills" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-bs-toggle="pill" href="#r0">开发中</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="pill" href="#r1">已完成且仍受支持</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="pill" href="#r2">支持已终止或开发中止</a>
+                            </li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div id="r0" class="container tab-pane active"><br>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title"><small><span
+                                                    class="badge rounded-pill bg-warning">开发中</span></small>计算机工具包6</h4>
+                                        <p class="card-text">CTKⅥ</p>
+                                        <a class="text-warning">联系管理组</a>
+                                        <a href="https://github.com/CaptBenjamin/CTK6" class="card-link">在 Github
+                                            上查看</a>
+                                    </div>
+                                </div>
+                                <br>
+                            </div>
+                            <div id="r1" class="container tab-pane fade"><br>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title"><small><span
+                                                    class="badge rounded-pill bg-success">已完成</span></small>CaptB 点名器
+                                        </h4>
+                                        <p class="card-text">CBRC</p>
+                                        <script>
+                                            function openWin0() {
+                                                window.open("https://dev.lykns.tk/CBRC/publish.html", "", "width=600,height=450,location=no,menubar=no,resizable=no,status=no,titlebar=no,toolbar=no");
+                                            }
+                                        </script>
+                                        <input type="button" value="下载安装程序" onclick="openWin0()">
+                                        <a href="https://github.com/CaptBenjamin/CBRC" class="card-link">在 Github
+                                            上查看</a>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title"><small><span
+                                                    class="badge rounded-pill bg-success">已完成</span></small>CaptB
+                                            点名器（高二五班版）</h4>
+                                        <p class="card-text">CBRC5</p>
+                                        <script>
+                                            function openWin1() {
+                                                window.open("https://dev.lykns.tk/59gqco9i74vju94bytip/publish.html", "", "width=600,height=450,location=no,menubar=no,resizable=no,status=no,titlebar=no,toolbar=no");
+                                            }
+                                        </script>
+                                        <input type="button" value="下载安装程序" onclick="openWin1()">
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title"><small><span
+                                                    class="badge rounded-pill bg-success">已完成</span></small>CAPTB压缩器重制版
+                                        </h4>
+                                        <p class="card-text">CAPTB-compressor</p>
+                                        <a href="https://github.com/CaptBenjamin/CAPTB-compressor" class="card-link">在
+                                            Github
+                                            上查看</a>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title"><small><span
+                                                    class="badge rounded-pill bg-success">已完成</span></small>北京天气</h4>
+                                        <p class="card-text">Beijing-s-weather</p>
+                                        <script>
+                                            function openWin2() {
+                                                window.open("https://dev.lykns.tk/BJW/publish.html", "", "width=600,height=450,location=no,menubar=no,resizable=no,status=no,titlebar=no,toolbar=no");
+                                            }
+                                        </script>
+                                        <input type="button" value="下载安装程序" onclick="openWin2()">
+                                        <a href="https://github.com/CaptBenjamin/Beijing-s-weather" class="card-link">在
+                                            Github
+                                            上查看</a>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title"><small><span
+                                                    class="badge rounded-pill bg-success">已完成</span></small>【代码示例】进度条100自动弹出新窗体
+                                        </h4>
+                                        <p class="card-text"></p>
+                                        <a href="https://github.com/CaptBenjamin/-100-" class="card-link">在 Github
+                                            上查看</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="r2" class="container tab-pane fade"><br>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title"><small><span
+                                                    class="badge rounded-pill bg-danger">停止支持</span></small>CB浏览器</h4>
+                                        <p class="card-text">CB-Browser</p>
+                                        <a href="https://github.com/CaptBenjamin/CB-Browser" class="card-link">在 Github
+                                            上查看</a>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title"><small><span
+                                                    class="badge rounded-pill bg-danger">停止支持</span></small>LYKNS 客户端
+                                            Windows 版
+                                        </h4>
+                                        <p class="card-text">LYKNS Client on Windows</p>
+                                        <a class="text-danger">停止安装</a>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title"><small><span
+                                                    class="badge rounded-pill bg-danger">开发中止</span></small>LYKNS 客户端
+                                            MacOS 版
+                                        </h4>
+                                        <p class="card-text">LYKNS Client on MacOS</p>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title"><small><span
+                                                    class="badge rounded-pill bg-danger">开发中止</span></small>LYKNS 客户端
+                                            Linux 版
+                                        </h4>
+                                        <p class="card-text">LYKNS Client on Linux</p>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title"><small><span
+                                                    class="badge rounded-pill bg-danger">停止支持</span></small>LYKNS 客户端
+                                            Android 版
+                                        </h4>
+                                        <p class="card-text">LYKNS Client on Android</p>
+                                        <a class="text-danger">停止下载</a>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title"><small><span
+                                                    class="badge rounded-pill bg-danger">开发中止</span></small>LYKNS 客户端
+                                            iOS 版</h4>
+                                        <p class="card-text">LYKNS Client on iOS</p>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title"><small><span
+                                                    class="badge rounded-pill bg-danger">停止支持</span></small>CAPTB压缩器
+                                        </h4>
+                                        <p class="card-text">CAPTB-compressor</p>
+                                        <a class="text-danger">停止安装</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

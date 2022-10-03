@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>NuclearCraft Fission Reactor Design Generator</title>
+    <link rel="stylesheet" href="main.css"/>
+    <script src="https://code.jquery.com/jquery-3.5.0.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <script src="FissionOpt.js"></script>
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <header>
+      <div>
+        <h2>Minecraft 核电工艺 聚变反应堆设计器</h2>
+      </div>
+      <div>
+        该工具可生成裂变反应堆设计，最大限度地提高有效功率输出、反应速度或效率。本页是许多流行的modpack使用的NuclearCraft大修前版本。
+        有关NuclearCraft的大修后版本，请单击 <a href="/overhaul.html">此处</a>。
+      </div>
+    </header>
+    <section id="settings">
+      <div>
+        <b>步骤1</b>: 输入反应器的核心（内部）尺寸：
+        <input type="text" id="sizeZ"> &times;
+        <input type="text" id="sizeX"> &times;
+        <input type="text" id="sizeY">
+      </div>
+      <div>
+        <b>步骤2</b>: 单击下表中要使用的燃料。除E2E和PO3外，大多数modpack都使用默认配置。或者，您可以在下面的文本框中手动输入燃料数据。燃料数据可以在燃料项的工具提示中找到。不要使用JEI中显示的数据，它们可能不正确。您还可以使用IC2和ExtremeReactors的燃料。详见下表。
+      </div>
+      <div>燃料基础能量: <input type="text" id="fuelBasePower"> RF/t</div>
+      <div>燃料基础放热: <input text="text" id="fuelBaseHeat"> H/t</div>
+      <div class="fuelPresets"><table>
+        <thead><tr><td>配置</td>
+          <td>铀锭</td>
+          <td>TBU</td>
+          <td>LEU-235</td>
+          <td>HEU-235</td>
+          <td>LEU-233</td>
+          <td>HEU-233</td>
+          <td>LEN-236</td>
+          <td>HEN-236</td>
+          <td>MOX-239</td>
+          <td>MOX-241</td>
+          <td>LEP-239</td>
+          <td>HEP-239</td>
+          <td>LEP-241</td>
+          <td>HEP-241</td>
+          <td>LEA-242</td>
+          <td>HEA-242</td>
+          <td>LECm-243</td>
+          <td>HECm-243</td>
+          <td>LECm-245</td>
+          <td>HECm-245</td>
+          <td>LECm-247</td>
+          <td>HECm-247</td>
+          <td>LEB-248</td>
+          <td>HEB-248</td>
+          <td>LECf-249</td>
+          <td>HECf-249</td>
+          <td>LECf-251</td>
+          <td>HECf-251</td>
+        </tr></thead>
+        <tr><th>默认</th>
+          <td>&mdash;</td>
+          <td><a href="javascript:;" id="DefTBU">正常</a>
+          <br><a href="javascript:;" id="DefTBUO">氧化物</a></td>
+          <td><a href="javascript:;" id="DefLEU235">正常</a>
+          <br><a href="javascript:;" id="DefLEU235O">氧化物</a></td>
+          <td><a href="javascript:;" id="DefHEU235">正常</a>
+          <br><a href="javascript:;" id="DefHEU235O">氧化物</a></td>
+          <td><a href="javascript:;" id="DefLEU233">正常</a>
+          <br><a href="javascript:;" id="DefLEU233O">氧化物</a></td>
+          <td><a href="javascript:;" id="DefHEU233">正常</a>
+          <br><a href="javascript:;" id="DefHEU233O">氧化物</a></td>
+          <td><a href="javascript:;" id="DefLEN236">正常</a>
+          <br><a href="javascript:;" id="DefLEN236O">氧化物</a></td>
+          <td><a href="javascript:;" id="DefHEN236">正常</a>
+          <br><a href="javascript:;" id="DefHEN236O">氧化物</a></td>
+          <td><a href="javascript:;" id="DefMOX239">加载</a></td>
+          <td><a href="javascript:;" id="DefMOX241">加载</a></td>
+          <td><a href="javascript:;" id="DefLEP239">正常</a>
+          <br><a href="javascript:;" id="DefLEP239O">氧化物</a></td>
+          <td><a href="javascript:;" id="DefHEP239">正常</a>
+          <br><a href="javascript:;" id="DefHEP239O">氧化物</a></td>
+          <td><a href="javascript:;" id="DefLEP241">正常</a>
+          <br><a href="javascript:;" id="DefLEP241O">氧化物</a></td>
+          <td><a href="javascript:;" id="DefHEP241">正常</a>
+          <br><a href="javascript:;" id="DefHEP241O">氧化物</a></td>
+          <td><a href="javascript:;" id="DefLEA242">正常</a>
+          <br><a href="javascript:;" id="DefLEA242O">氧化物</a></td>
+          <td><a href="javascript:;" id="DefHEA242">正常</a>
+          <br><a href="javascript:;" id="DefHEA242O">氧化物</a></td>
+          <td><a href="javascript:;" id="DefLECm243">正常</a>
+          <br><a href="javascript:;" id="DefLECm243O">氧化物</a></td>
+          <td><a href="javascript:;" id="DefHECm243">正常</a>
+          <br><a href="javascript:;" id="DefHECm243O">氧化物</a></td>
+          <td><a href="javascript:;" id="DefLECm245">正常</a>
+          <br><a href="javascript:;" id="DefLECm245O">氧化物</a></td>
+          <td><a href="javascript:;" id="DefHECm245">正常</a>
+          <br><a href="javascript:;" id="DefHECm245O">氧化物</a></td>
+          <td><a href="javascript:;" id="DefLECm247">正常</a>
+          <br><a href="javascript:;" id="DefLECm247O">氧化物</a></td>
+          <td><a href="javascript:;" id="DefHECm247">正常</a>
+          <br><a href="javascript:;" id="DefHECm247O">氧化物</a></td>
+          <td><a href="javascript:;" id="DefLEB248">正常</a>
+          <br><a href="javascript:;" id="DefLEB248O">氧化物</a></td>
+          <td><a href="javascript:;" id="DefHEB248">正常</a>
+          <br><a href="javascript:;" id="DefHEB248O">氧化物</a></td>
+          <td><a href="javascript:;" id="DefLECf249">正常</a>
+          <br><a href="javascript:;" id="DefLECf249O">氧化物</a></td>
+          <td><a href="javascript:;" id="DefHECf249">正常</a>
+          <br><a href="javascript:;" id="DefHECf249O">氧化物</a></td>
+          <td><a href="javascript:;" id="DefLECf251">正常</a>
+          <br><a href="javascript:;" id="DefLECf251O">氧化物</a></td>
+          <td><a href="javascript:;" id="DefHECf251">正常</a>
+          <br><a href="javascript:;" id="DefHECf251O">氧化物</a></td>
+        </tr>
+        <tr><th>E2E</th>
+          <td><a href="javascript:;" id="E2EUraniumIngot">加载</a></td>
+          <td><a href="javascript:;" id="E2ETBU">正常</a>
+          <br><a href="javascript:;" id="E2ETBUO">氧化物</a></td>
+          <td><a href="javascript:;" id="E2ELEU235">正常</a>
+          <br><a href="javascript:;" id="E2ELEU235O">氧化物</a></td>
+          <td><a href="javascript:;" id="E2EHEU235">正常</a>
+          <br><a href="javascript:;" id="E2EHEU235O">氧化物</a></td>
+          <td><a href="javascript:;" id="E2ELEU233">正常</a>
+          <br><a href="javascript:;" id="E2ELEU233O">氧化物</a></td>
+          <td><a href="javascript:;" id="E2EHEU233">正常</a>
+          <br><a href="javascript:;" id="E2EHEU233O">氧化物</a></td>
+          <td><a href="javascript:;" id="E2ELEN236">正常</a>
+          <br><a href="javascript:;" id="E2ELEN236O">氧化物</a></td>
+          <td><a href="javascript:;" id="E2EHEN236">正常</a>
+          <br><a href="javascript:;" id="E2EHEN236O">氧化物</a></td>
+          <td><a href="javascript:;" id="E2EMOX239">加载</a></td>
+          <td><a href="javascript:;" id="E2EMOX241">加载</a></td>
+          <td><a href="javascript:;" id="E2ELEP239">正常</a>
+          <br><a href="javascript:;" id="E2ELEP239O">氧化物</a></td>
+          <td><a href="javascript:;" id="E2EHEP239">正常</a>
+          <br><a href="javascript:;" id="E2EHEP239O">氧化物</a></td>
+          <td><a href="javascript:;" id="E2ELEP241">正常</a>
+          <br><a href="javascript:;" id="E2ELEP241O">氧化物</a></td>
+          <td><a href="javascript:;" id="E2EHEP241">正常</a>
+          <br><a href="javascript:;" id="E2EHEP241O">氧化物</a></td>
+          <td><a href="javascript:;" id="E2ELEA242">正常</a>
+          <br><a href="javascript:;" id="E2ELEA242O">氧化物</a></td>
+          <td><a href="javascript:;" id="E2EHEA242">正常</a>
+          <br><a href="javascript:;" id="E2EHEA242O">氧化物</a></td>
+          <td><a href="javascript:;" id="E2ELECm243">正常</a>
+          <br><a href="javascript:;" id="E2ELECm243O">氧化物</a></td>
+          <td><a href="javascript:;" id="E2EHECm243">正常</a>
+          <br><a href="javascript:;" id="E2EHECm243O">氧化物</a></td>
+          <td><a href="javascript:;" id="E2ELECm245">正常</a>
+          <br><a href="javascript:;" id="E2ELECm245O">氧化物</a></td>
+          <td><a href="javascript:;" id="E2EHECm245">正常</a>
+          <br><a href="javascript:;" id="E2EHECm245O">氧化物</a></td>
+          <td><a href="javascript:;" id="E2ELECm247">正常</a>
+          <br><a href="javascript:;" id="E2ELECm247O">氧化物</a></td>
+          <td><a href="javascript:;" id="E2EHECm247">正常</a>
+          <br><a href="javascript:;" id="E2EHECm247O">氧化物</a></td>
+          <td><a href="javascript:;" id="E2ELEB248">正常</a>
+          <br><a href="javascript:;" id="E2ELEB248O">氧化物</a></td>
+          <td><a href="javascript:;" id="E2EHEB248">正常</a>
+          <br><a href="javascript:;" id="E2EHEB248O">氧化物</a></td>
+          <td><a href="javascript:;" id="E2ELECf249">正常</a>
+          <br><a href="javascript:;" id="E2ELECf249O">氧化物</a></td>
+          <td><a href="javascript:;" id="E2EHECf249">正常</a>
+          <br><a href="javascript:;" id="E2EHECf249O">氧化物</a></td>
+          <td><a href="javascript:;" id="E2ELECf251">正常</a>
+          <br><a href="javascript:;" id="E2ELECf251O">氧化物</a></td>
+          <td><a href="javascript:;" id="E2EHECf251">正常</a>
+          <br><a href="javascript:;" id="E2EHECf251O">氧化物</a></td>
+        </tr>
+        <tr><th>PO3</th>
+          <td>&mdash;</td>
+          <td><a href="javascript:;" id="PO3TBU">正常</a>
+          <br><a href="javascript:;" id="PO3TBUO">氧化物</a></td>
+          <td><a href="javascript:;" id="PO3LEU235">正常</a>
+          <br><a href="javascript:;" id="PO3LEU235O">氧化物</a></td>
+          <td><a href="javascript:;" id="PO3HEU235">正常</a>
+          <br><a href="javascript:;" id="PO3HEU235O">氧化物</a></td>
+          <td><a href="javascript:;" id="PO3LEU233">正常</a>
+          <br><a href="javascript:;" id="PO3LEU233O">氧化物</a></td>
+          <td><a href="javascript:;" id="PO3HEU233">正常</a>
+          <br><a href="javascript:;" id="PO3HEU233O">氧化物</a></td>
+          <td><a href="javascript:;" id="PO3LEN236">正常</a>
+          <br><a href="javascript:;" id="PO3LEN236O">氧化物</a></td>
+          <td><a href="javascript:;" id="PO3HEN236">正常</a>
+          <br><a href="javascript:;" id="PO3HEN236O">氧化物</a></td>
+          <td><a href="javascript:;" id="PO3MOX239">加载</a></td>
+          <td><a href="javascript:;" id="PO3MOX241">加载</a></td>
+          <td><a href="javascript:;" id="PO3LEP239">正常</a>
+          <br><a href="javascript:;" id="PO3LEP239O">氧化物</a></td>
+          <td><a href="javascript:;" id="PO3HEP239">正常</a>
+          <br><a href="javascript:;" id="PO3HEP239O">氧化物</a></td>
+          <td><a href="javascript:;" id="PO3LEP241">正常</a>
+          <br><a href="javascript:;" id="PO3LEP241O">氧化物</a></td>
+          <td><a href="javascript:;" id="PO3HEP241">正常</a>
+          <br><a href="javascript:;" id="PO3HEP241O">氧化物</a></td>
+          <td><a href="javascript:;" id="PO3LEA242">正常</a>
+          <br><a href="javascript:;" id="PO3LEA242O">氧化物</a></td>
+          <td><a href="javascript:;" id="PO3HEA242">正常</a>
+          <br><a href="javascript:;" id="PO3HEA242O">氧化物</a></td>
+          <td><a href="javascript:;" id="PO3LECm243">正常</a>
+          <br><a href="javascript:;" id="PO3LECm243O">氧化物</a></td>
+          <td><a href="javascript:;" id="PO3HECm243">正常</a>
+          <br><a href="javascript:;" id="PO3HECm243O">氧化物</a></td>
+          <td><a href="javascript:;" id="PO3LECm245">正常</a>
+          <br><a href="javascript:;" id="PO3LECm245O">氧化物</a></td>
+          <td><a href="javascript:;" id="PO3HECm245">正常</a>
+          <br><a href="javascript:;" id="PO3HECm245O">氧化物</a></td>
+          <td><a href="javascript:;" id="PO3LECm247">正常</a>
+          <br><a href="javascript:;" id="PO3LECm247O">氧化物</a></td>
+          <td><a href="javascript:;" id="PO3HECm247">正常</a>
+          <br><a href="javascript:;" id="PO3HECm247O">氧化物</a></td>
+          <td><a href="javascript:;" id="PO3LEB248">正常</a>
+          <br><a href="javascript:;" id="PO3LEB248O">氧化物</a></td>
+          <td><a href="javascript:;" id="PO3HEB248">正常</a>
+          <br><a href="javascript:;" id="PO3HEB248O">氧化物</a></td>
+          <td><a href="javascript:;" id="PO3LECf249">正常</a>
+          <br><a href="javascript:;" id="PO3LECf249O">氧化物</a></td>
+          <td><a href="javascript:;" id="PO3HECf249">正常</a>
+          <br><a href="javascript:;" id="PO3HECf249O">氧化物</a></td>
+          <td><a href="javascript:;" id="PO3LECf251">正常</a>
+          <br><a href="javascript:;" id="PO3LECf251O">氧化物</a></td>
+          <td><a href="javascript:;" id="PO3HECf251">正常</a>
+          <br><a href="javascript:;" id="PO3HECf251O">氧化物</a></td>
+        </tr>
+      </table></div>
+      <div>
+        对于 ExtremeReactors 的 Yellorium 或 Blutonium ，单击 LEU-235 正常，然后单击 <a href="javascript:;" id="br">这里</a> 一次。<br>
+        对于 IC2 的浓缩铀核燃料，单击 LEU-235 正常，然后单击 <a href="javascript:;" id="ic2">这里</a> 一次。<br>
+        对于 IC2 的 MOX 核燃料，单击 MOX-239 ，然后单击 <a href="javascript:;" id="ic2mox">这里</a> 一次。
+      </div>
+      <div>
+        <b>步骤3</b>: 如果要限制某一类型方块的使用，请在下表中输入允许的最大数量。输入零可完全禁用该块。您可以将鼠标悬停在首字母缩写词上，查看每个块的全名。默认情况下禁用主动冷却器。您可以通过删除零来启用它们。
+      </div>
+      <table>
+        <thead><tr id="blockType"><th>方块类型</th>
+          <th class="Wt">Wt</th><th class="Rs">Rs</th><th class="Qz">Qz</th>
+          <th class="Au">Au</th><th class="Gs">Gs</th><th class="Lp">Lp</th>
+          <th class="Dm">Dm</th><th class="He">He</th><th class="Ed">Ed</th>
+          <th class="Cr">Cr</th><th class="Fe">Fe</th><th class="Em">Em</th>
+          <th class="Cu">Cu</th><th class="Sn">Sn</th><th class="Mg">Mg</th>
+          <th class="cell">[]</th><th class="mod">##</th>
+        </tr></thead>
+        <tbody>
+          <tr id="rate"><th>冷却速率 (H/t)</th>
+            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+            <td>&mdash;</td><td>&mdash;</td>
+          </tr>
+          <tr id="limit"><th>最大容许</th>
+            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+            <td><input type="text"></td><td><input type="text"></td>
+          </tr>
+          <tr id="activeRate"><th>激活速率 (H/t)</th>
+            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+            <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+            <td>&mdash;</td><td>&mdash;</td>
+          </tr>
+          <tr id="activeLimit"><th>最大激活容许</th>
+            <td><input type="text" value="0"></td><td><input type="text" value="0"></td><td><input type="text" value="0"></td>
+            <td><input type="text" value="0"></td><td><input type="text" value="0"></td><td><input type="text" value="0"></td>
+            <td><input type="text" value="0"></td><td><input type="text" value="0"></td><td><input type="text" value="0"></td>
+            <td><input type="text" value="0"></td><td><input type="text" value="0"></td><td><input type="text" value="0"></td>
+            <td><input type="text" value="0"></td><td><input type="text" value="0"></td><td><input type="text" value="0"></td>
+            <td>&mdash;</td><td>&mdash;</td>
+          </tr>
+        </tbody>
+      </table>
+      <div>
+        <b>步骤4</b>: 单击以下模组包配置之一以加载冷却速率数据：
+        <a href="javascript:;" id="DefRate">默认</a>
+        <a href="javascript:;" id="E2ERate">E2E</a>
+        <a href="javascript:;" id="PO3Rate">PO3</a>。也可以自己输入数据。被动冷却速率位于每个冷却器项目的工具提示中。有效冷却速率以JEI为单位。
+      </div>
+      <div>
+        <b>步骤5</b>: 调整以下选项并单击&ldquo；运行&rdquo；开始优化。<br>
+        <label><input type="checkbox" id="ensureActiveCoolerAccessible" checked>确保可通过管道接近主动冷却器。</label><br>
+        <label><input type="checkbox" id="ensureHeatNeutral" checked>仅产生热中性电抗器。</label><br>
+        <label><input type="radio" name="goal" value="0" checked>优化能量。</label><br>
+        <label><input type="radio" name="goal" value="1">优化消耗（最大化燃油消耗率）。</label><br>
+        <label><input type="radio" name="goal" value="2">优化效率。</label><br>
+        <label><input type="checkbox" id="symZ" checked>X 对称性</label>
+        <label><input type="checkbox" id="symX" checked>Y 对称性</label>
+        <label><input type="checkbox" id="symY" checked>Z 对称性</label><br>
+        <label><input type="checkbox" id="useNet" checked>使用强化学习（需要更多内存，速度稍慢，但可以产生更好的设计）</label><br>
+        The most efficient reactor doesn't produce the most power. To get a efficient reactor that can still generate lots of power,
+        you should optimize for power while limiting the cell count using the &ldquo;Max Allowed&rdquo; box for <span class="row cell" title="Reactor Cell">[]</span>.
+        要获得理想的电池计数，请将燃料的基本处理时间除以您希望燃料持续的时间。
+        启用对称 和/或 限制块计数通常会加快算法的速度。
+        该算法使用固定种子：除非对算法进行更新，否则不同的运行将始终产生相同的结果（上次更新时间：2020年5月19日）。
+        您可以使用 <a href="https://www.curseforge.com/minecraft/mc-mods/building-gadgets">构建小工具</a> 以自动化反应堆的构建。
+        为此，请保存设计的JSON，然后将其加载到 <a href="https://github.com/hellrage/NC-Reactor-Planner/releases/tag/v1.2.25">Hellrage's Reactor Planner</a>,
+        然后单击 &ldquo;Generate BG string&rdquo;。然后您可以将其粘贴到 <a href="https://github.com/Direwolf20-MC/BuildingGadgets/wiki/Template-Manager">Template Manager</a>。<br>
+        <span style="color:red;">注意：在一些浏览器中，此选项卡不会在后台运行！如果要切换到其他选项卡，请将此选项卡作为专用窗口拖出，不要最小化它。</span>
+      </div>
+    </section>
+    <main>
+      <div>
+        <a href="javascript:;" id="run">运行</a>
+        <a href="javascript:;" id="pause" class="disabledLink">暂停</a>
+        <a href="javascript:;" id="stop" class="disabledLink">停止</a>
+        <a href="javascript:;" id="save" class="disabledLink">保存 JSON</a>
+      </div>
+      <div id="progress"></div>
+      <div id="design"></div>
+    </main>
+  </body>
+</html>

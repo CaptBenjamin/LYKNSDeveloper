@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Minecraft 核电工艺 裂变反应堆设计器</title>
+    <link rel="stylesheet" href="overhaul.css"/>
+    <script src="https://code.jquery.com/jquery-3.5.0.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+    <script src="FissionOpt.js"></script>
+    <script src="overhaul.js"></script>
+  </head>
+  <body>
+    <header>
+      <div>
+        <h2>Minecraft 核电工艺 裂变反应堆设计器</h2>、
+      </div>
+      <div>该工具生成一个NuclearCraft：按照指定标准进行的大修裂变反应堆设计。点击 <a href="/">这里</a> 查看大修前版本。</div>
+    </header>
+    <section id="settings">
+      <div>
+        内部尺寸:
+        <input type="text" id="sizeZ"> &times;
+        <input type="text" id="sizeX"> &times;
+        <input type="text" id="sizeY">
+      </div>
+      <table>
+        <thead><tr><th>燃料 ID</th><th>燃料名称</th><th>效率 (%)</th><th>产热 (H/t)</th><th>重要性 (N)</th><th>自启动</th><th>允许的最大单元格数</th><th>管理</th></tr></thead>
+        <tbody id="fuelTable">
+          <tr id="newFuelRow"><td colspan="8"><a href="javascript:;" id="newFuel">新燃料</a></td></tr>
+        </tbody>
+      </table>
+      <div>燃料预设</div>
+      <div id="fuelPresets"><table>
+        <thead><tr></tr></thead>
+        <tr></tr>
+      </table></div>
+      <div>中子源设置</div>
+      <table>
+        <thead><tr><th>源类型</th><th>Cf-252</th><th>Po-Be</th><th>Ra-Be</th></tr></thead>
+        <tbody><tr><th>最大容许</th>
+          <td><input id="sourceLimit0" type="text" class="limit"></td>
+          <td><input id="sourceLimit1" type="text" class="limit" value="0"></td>
+          <td><input id="sourceLimit2" type="text" class="limit" value="0"></td>
+        </tr></tbody>
+      </table>
+      <div>方块自定义设置</div>
+      <div id="blockSettings"><table>
+        <thead><tr id="blockTypes"><th>方块类型</th></tr></thead>
+        <tbody><tr id="blockLimits"><th>最大容许</th></tr></tbody>
+      </table></div>
+      <div>
+        <label><input type="checkbox" id="controllable">仅生成可关闭的反应器。</label><br>
+        <label><input type="radio" name="goal" value="0" checked>优化输出。</label><br>
+        <label><input type="radio" name="goal" value="1">优化消耗（最大化燃油消耗率）。</label><br>
+        <label><input type="radio" name="goal" value="2">优化效率。</label><br>
+        <label><input type="radio" name="goal" value="3">优化辐射。</label><br>
+        <label><input type="checkbox" id="symZ" checked>X 对称性</label>
+        <label><input type="checkbox" id="symX" checked>Y 对称性</label>
+        <label><input type="checkbox" id="symY" checked>Z 对称性</label><br>
+        该算法使用固定种子：除非对算法进行更新，否则不同的运行将始终产生相同的结果。上次更新日期：2020年7月26日<br>
+        <span style="color:red;">注意：在一些浏览器中，此选项卡不会在后台运行！如果要切换到其他选项卡，请将此选项卡作为专用窗口拖出，不要最小化它。</span>
+      </div>
+    </section>
+    <main>
+      <div>
+        <a href="javascript:;" id="run">运行</a>
+        <a href="javascript:;" id="pause" class="disabledLink">暂停</a>
+        <a href="javascript:;" id="stop" class="disabledLink">停止</a>
+        <a href="javascript:;" id="save" class="disabledLink">保存为 JSON</a>
+      </div>
+      <div id="progress"></div>
+      <div id="design"></div>
+    </main>
+  </body>
+</html>
